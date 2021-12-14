@@ -57,7 +57,7 @@ public class Customer extends JFrame {
 		getContentPane().add(btn_logout);
 
 		JButton btn_service_history = new JButton("Service History");  
-		btn_service_history.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btn_service_history.setFont(new Font("Tahoma", Font.BOLD, 12));
 		btn_service_history.addActionListener(new ActionListener() {		// TODO: Service history button	
 			public void actionPerformed(ActionEvent e) {
 				//System.out.println("Service History");
@@ -81,17 +81,18 @@ public class Customer extends JFrame {
 		panel.setLayout(new GridLayout(n, 3, 0, 10));
 		panel.getComponentOrientation();
 
-		// TODO: Connect to jdbc and call using Component.method(service_id)
 		for (int i = 0; i < n; i++) {
-			service[i] = new JLabel("Service " + i);					// TODO: component.createServiceLabel
-			service[i].setFont(new Font("Tahoma", Font.PLAIN, 21));
+			String serv_id = pg.getServiceID(i);
+			/*
+			service[i] = new JLabel("Service " + i);
+			service[i].setFont(new Font("Tahoma", Font.BOLD, 21));
 			panel.add(service[i]);
-			// createServiceLabel(getServiceID(i+1), panel);
-
-			price[i] = new JLabel("Price " + i);						// TODO: component.createPriceLabel
-			price[i].setFont(new Font("Tahoma", Font.PLAIN, 21));
+			price[i] = new JLabel("Price " + i);
+			price[i].setFont(new Font("Tahoma", Font.BOLD, 21));
 			panel.add(price[i]);
-			
+			*/
+			Component.createServiceLabel(serv_id, panel);
+			Component.createPriceLabel(serv_id, panel);
 			Component.createRequestButton(user_id, i, panel);
 		}
 

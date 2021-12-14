@@ -26,16 +26,18 @@ public class Component {			// TODO Replace(remove) all Font.PLAIN in all classes
 		panel.add(request);
 	}
 	
-	public static void createServiceLabel(String service_id, JPanel panel)
+	public static void createServiceLabel(String serv_id, JPanel panel)
 	{
-		JLabel service = new JLabel("Service");						// TODO
+		String serv_name = pg.getServiceName(serv_id);
+		JLabel service = new JLabel(serv_name);
 		service.setFont(new Font("Tahoma", Font.PLAIN, 21));
 		panel.add(service);
 	}
 	
-	public static void createPriceLabel(String service_id, JPanel panel)
+	public static void createPriceLabel(String serv_id, JPanel panel)
 	{
-		JLabel price = new JLabel("Price");							// TODO
+		String serv_price = pg.getPrice(serv_id);
+		JLabel price = new JLabel("$"+serv_price);
 		price.setFont(new Font("Tahoma", Font.PLAIN, 21));
 		panel.add(price);
 	}

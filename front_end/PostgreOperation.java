@@ -62,7 +62,7 @@ public class PostgreOperation {
 		return count;
 	}
 	
-	public String getServiceID(int i)  // TODO
+	public String getServiceID(int i)
 	{
 		String serv_id = "";
 		try {
@@ -80,7 +80,43 @@ public class PostgreOperation {
 		return serv_id;
 	}
 	
-	public String getCustID(String user_id)  //TODO
+	public String getServiceName(String serv_id)
+	{
+		String name = "";
+		try {
+			sql = "SELECT name FROM services WHERE serv_id = ?;";
+			ps = c.prepareStatement(sql);
+			ps.setInt(1, Integer.parseInt(serv_id));
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				name = rs.getString(1);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return name;
+	}
+	
+	public String getPrice(String serv_id)
+	{
+		String price = "";
+		try {
+			sql = "select price from services WHERE serv_id = ?;";
+			ps = c.prepareStatement(sql);
+			ps.setInt(1, Integer.parseInt(serv_id));
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				price = rs.getString(1);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return price;
+	}
+	
+	public String getCustID(String user_id)
 	{
 		String cust_id = "";
 		try {
