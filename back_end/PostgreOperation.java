@@ -1,4 +1,4 @@
-package front_end;
+package back_end;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -15,7 +15,7 @@ public class PostgreOperation {
 	String sql = null;
 	PreparedStatement ps = null;
 
-	PostgreOperation() {
+	public PostgreOperation() {
 		try {
 			Class.forName("org.postgresql.Driver");
 			c = DriverManager.getConnection("jdbc:postgresql://localhost:5432/icts", "postgres", "12345");
@@ -55,33 +55,31 @@ public class PostgreOperation {
 			while (rs.next()) {
 				count = rs.getInt(1);
 			}
-			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return count;
 	}
-	
-	public String getServiceID(int i)
-	{
+
+	public String getServiceID(int i) {
 		String serv_id = "";
 		try {
 			sql = "SELECT serv_id from services WHERE serv_id = ?";
 			ps = c.prepareStatement(sql);
-			ps.setInt(1, i+1);
+			ps.setInt(1, i + 1);
 			rs = ps.executeQuery();
 			while (rs.next()) {
 				serv_id = rs.getString(1);
 			}
-			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return serv_id;
 	}
-	
-	public String getServiceName(String serv_id)
-	{
+
+	public String getServiceName(String serv_id) {
 		String name = "";
 		try {
 			sql = "SELECT name FROM services WHERE serv_id = ?;";
@@ -91,15 +89,14 @@ public class PostgreOperation {
 			while (rs.next()) {
 				name = rs.getString(1);
 			}
-			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return name;
 	}
-	
-	public String getPrice(String serv_id)
-	{
+
+	public String getPrice(String serv_id) {
 		String price = "";
 		try {
 			sql = "select price from services WHERE serv_id = ?;";
@@ -109,15 +106,14 @@ public class PostgreOperation {
 			while (rs.next()) {
 				price = rs.getString(1);
 			}
-			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return price;
 	}
-	
-	public String getCustID(String user_id)
-	{
+
+	public String getCustID(String user_id) {
 		String cust_id = "";
 		try {
 			sql = "SELECT cust_id from customer WHERE user_id = ?";
@@ -127,30 +123,27 @@ public class PostgreOperation {
 			while (rs.next()) {
 				cust_id = rs.getString(1);
 			}
-			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return cust_id;
 	}
-	
-	public void addRequest(String serv_id, String cust_id)
-	{
+
+	public void addRequest(String serv_id, String cust_id) {
 		int n = getCount("SELECT count(*) FROM request;");
 		try {
 			sql = "INSERT INTO request VALUES (?, ?, ?, 'Pending');";
 			ps = c.prepareStatement(sql);
-			ps.setInt(1, n+1);
-			ps.setInt(2, Integer.parseInt(serv_id));  
+			ps.setInt(1, n + 1);
+			ps.setInt(2, Integer.parseInt(serv_id));
 			ps.setInt(3, Integer.parseInt(cust_id));
 			ps.executeUpdate();
-		
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
+
 	}
-
-
 
 }

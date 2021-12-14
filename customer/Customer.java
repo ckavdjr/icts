@@ -1,7 +1,6 @@
-package front_end;
+package customer;
 
 import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JButton;
@@ -12,12 +11,15 @@ import javax.swing.JPanel;
 import java.awt.GridLayout;
 import java.awt.Font;
 
+import back_end.Component;
+import back_end.PostgreOperation;
+
 public class Customer extends JFrame {
 
 	private JLabel[] service;
 	private JLabel[] price;
 	private static String user_id;
-	
+
 	PostgreOperation pg = new PostgreOperation();
 
 	/**
@@ -25,7 +27,7 @@ public class Customer extends JFrame {
 	 */
 	public Customer(String user_id) {
 		Customer.user_id = user_id;
-		
+
 		initialize();
 	}
 
@@ -39,8 +41,9 @@ public class Customer extends JFrame {
 		setResizable(false);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		getContentPane().setLayout(null);
-		
-		String msg = "Welcome, " + pg.getName(user_id);;
+
+		String msg = "Welcome, " + pg.getName(user_id);
+		;
 		JLabel lbl_welcome = new JLabel(msg);
 		lbl_welcome.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		lbl_welcome.setBounds(122, 27, 431, 61);
@@ -48,19 +51,19 @@ public class Customer extends JFrame {
 
 		JButton btn_logout = new JButton("Logout");
 		btn_logout.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		btn_logout.addActionListener(new ActionListener() {				// TODO: Logout button
+		btn_logout.addActionListener(new ActionListener() { // TODO: Logout button
 			public void actionPerformed(ActionEvent e) {
-				//System.out.println("Logged out");
+				// System.out.println("Logged out");
 			}
 		});
 		btn_logout.setBounds(765, 41, 130, 44);
 		getContentPane().add(btn_logout);
 
-		JButton btn_service_history = new JButton("Service History");  
+		JButton btn_service_history = new JButton("Service History");
 		btn_service_history.setFont(new Font("Tahoma", Font.BOLD, 12));
-		btn_service_history.addActionListener(new ActionListener() {		// TODO: Service history button	
+		btn_service_history.addActionListener(new ActionListener() { // TODO: Service history button
 			public void actionPerformed(ActionEvent e) {
-				//System.out.println("Service History");
+				// System.out.println("Service History");
 			}
 		});
 		btn_service_history.setBounds(384, 494, 237, 61);
@@ -84,13 +87,11 @@ public class Customer extends JFrame {
 		for (int i = 0; i < n; i++) {
 			String serv_id = pg.getServiceID(i);
 			/*
-			service[i] = new JLabel("Service " + i);
-			service[i].setFont(new Font("Tahoma", Font.BOLD, 21));
-			panel.add(service[i]);
-			price[i] = new JLabel("Price " + i);
-			price[i].setFont(new Font("Tahoma", Font.BOLD, 21));
-			panel.add(price[i]);
-			*/
+			 * service[i] = new JLabel("Service " + i); service[i].setFont(new
+			 * Font("Tahoma", Font.BOLD, 21)); panel.add(service[i]); price[i] = new
+			 * JLabel("Price " + i); price[i].setFont(new Font("Tahoma", Font.BOLD, 21));
+			 * panel.add(price[i]);
+			 */
 			Component.createServiceLabel(serv_id, panel);
 			Component.createPriceLabel(serv_id, panel);
 			Component.createRequestButton(user_id, i, panel);
