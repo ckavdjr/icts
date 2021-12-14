@@ -89,11 +89,28 @@ public class PostgreOperation {
 		}
 		return count;
 	}
+	
+	public String getCustID(String user_id) {
+		String cust_id = "";
+		try {
+			sql = "SELECT cust_id FROM customer WHERE user_id = ?";
+			ps = c.prepareStatement(sql);
+			ps.setInt(1, Integer.parseInt(user_id));
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				cust_id = rs.getString(1);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return cust_id;
+	}
 
 	public String getServiceID(int i) {
 		String serv_id = "";
 		try {
-			sql = "SELECT serv_id from services WHERE serv_id = ?";
+			sql = "SELECT serv_id FROM services WHERE serv_id = ?";
 			ps = c.prepareStatement(sql);
 			ps.setInt(1, i + 1);
 			rs = ps.executeQuery();
@@ -127,7 +144,7 @@ public class PostgreOperation {
 	public String getPrice(String serv_id) {
 		String price = "";
 		try {
-			sql = "select price from services WHERE serv_id = ?;";
+			sql = "SELECT price FROM services WHERE serv_id = ?;";
 			ps = c.prepareStatement(sql);
 			ps.setInt(1, Integer.parseInt(serv_id));
 			rs = ps.executeQuery();
@@ -140,24 +157,7 @@ public class PostgreOperation {
 		}
 		return price;
 	}
-
-	public String getCustID(String user_id) {
-		String cust_id = "";
-		try {
-			sql = "SELECT cust_id from customer WHERE user_id = ?";
-			ps = c.prepareStatement(sql);
-			ps.setInt(1, Integer.parseInt(user_id));
-			rs = ps.executeQuery();
-			while (rs.next()) {
-				cust_id = rs.getString(1);
-			}
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return cust_id;
-	}
-
+	
 	public void addRequest(String serv_id, String cust_id) {
 		int n = getCount("SELECT count(*) FROM request;");
 		try {
@@ -173,6 +173,29 @@ public class PostgreOperation {
 		}
 
 	}
+
+	public String[][] getServiceHistoryLabels(String cust_id, int n) {
+		String[][] arr = new String[n][3];
+		try {
+			sql = "SELECT services.name, request.status, assignment.date FROM request INNER JOIN services ON request.serv_id = services.serv_id FULL JOIN assignment ON request.req_id = assignment.req_id WHERE cust_id = ?;";
+			ps = c.prepareStatement(sql);
+			ps.setInt(1, Integer.parseInt(cust_id));
+			rs = ps.executeQuery();
+			int i = 0;
+			while (rs.next()) {
+				arr[i][0] = rs.getString(1);
+				arr[i][1] = rs.getString(2);
+				arr[i][2] = rs.getString(3);
+				i++;
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return arr;
+	}
+
+	
 
 	
 	/*

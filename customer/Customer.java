@@ -119,7 +119,7 @@ public class Customer extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Customer window = new Customer("1"); // Login with first user
+					Customer window = new Customer("2"); // Login with first user
 					window.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();

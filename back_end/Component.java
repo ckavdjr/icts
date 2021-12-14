@@ -44,6 +44,51 @@ public class Component { // TODO Replace(remove) all Font.PLAIN in all classes
 		panel.add(price);
 	}
 
+	public static void createServiceHistoryLabels(String cust_id, JPanel panel, int n) {
+		String[][] arr = pg.getServiceHistoryLabels(cust_id, n);
+		/*
+		JLabel name = new JLabel(arr[i][0]);
+		name.setFont(new Font("Tahoma", Font.PLAIN, 21));
+		panel.add(name);
+		
+		JLabel status = new JLabel(arr[i][1]);
+		status.setFont(new Font("Tahoma", Font.PLAIN, 21));
+		panel.add(status);
+		
+		JLabel date = new JLabel(arr[i][2]);
+		date.setFont(new Font("Tahoma", Font.PLAIN, 21));
+		panel.add(date);*/
+		
+		
+		for (int i = 0; i < n; i++) {
+			
+			JLabel name = new JLabel(arr[i][0]);
+			name.setFont(new Font("Tahoma", Font.PLAIN, 21));
+			panel.add(name);
+			
+			JLabel status = new JLabel(arr[i][1]);
+			status.setFont(new Font("Tahoma", Font.PLAIN, 21));
+			panel.add(status);
+			
+			JLabel date = new JLabel(arr[i][2]);
+			date.setFont(new Font("Tahoma", Font.PLAIN, 21));
+			panel.add(date);
+			//String serv_id = pg.getServiceID(i);
+			//Component.createServiceLabel(serv_id, panel);
+			//Component.createPriceLabel(serv_id, panel);
+			//Component.createRequestButton(user_id, i, panel);
+		}
+		
+		for (int i = 0; i < n; i++) {
+			System.out.println(arr[i][0]);
+			System.out.println(arr[i][1]);
+			System.out.println(arr[i][2]);
+			System.out.println();
+		}
+	}
+
+	
+
 	
 	/*
 	 * For Employee

@@ -51,14 +51,16 @@ public class ServiceHistory extends JFrame {
 		getContentPane().add(panel);
 		panel.setLayout(new GridLayout(n, 3, 0, 10));
 		
-		
-
+		Component.createServiceHistoryLabels(cust_id, panel, n);
+		/*
 		for (int i = 0; i < n; i++) {
+			
 			//String serv_id = pg.getServiceID(i);
 			//Component.createServiceLabel(serv_id, panel);
 			//Component.createPriceLabel(serv_id, panel);
 			//Component.createRequestButton(user_id, i, panel);
 		}
+		*/
 		
 		
 	}
@@ -67,7 +69,7 @@ public class ServiceHistory extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ServiceHistory window = new ServiceHistory("1");
+					ServiceHistory window = new ServiceHistory("2");
 					window.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
