@@ -1,12 +1,12 @@
+/**
+ * @author Aravind Haridas
+ */
+
 package customer;
 
 import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import javax.swing.JScrollPane;
 import javax.swing.JPanel;
 import java.awt.GridLayout;
 import java.awt.Font;
@@ -39,7 +39,7 @@ public class ServiceHistory extends JFrame {
 		setResizable(false);
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		getContentPane().setLayout(null);
-		
+
 		JLabel lbl_title = new JLabel("Service History");
 		lbl_title.setFont(new Font("Tahoma", Font.PLAIN, 27));
 		lbl_title.setBounds(63, 21, 259, 42);
@@ -50,26 +50,16 @@ public class ServiceHistory extends JFrame {
 		panel.setBounds(40, 87, 620, 285);
 		getContentPane().add(panel);
 		panel.setLayout(new GridLayout(n, 3, 0, 10));
-		
+
 		Component.createServiceHistoryLabels(cust_id, panel, n);
-		/*
-		for (int i = 0; i < n; i++) {
-			
-			//String serv_id = pg.getServiceID(i);
-			//Component.createServiceLabel(serv_id, panel);
-			//Component.createPriceLabel(serv_id, panel);
-			//Component.createRequestButton(user_id, i, panel);
-		}
-		*/
-		
-		
+
 	}
-	
+
 	static void openFrame(String cust_id) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ServiceHistory window = new ServiceHistory("2");
+					ServiceHistory window = new ServiceHistory(cust_id);
 					window.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -86,7 +76,7 @@ public class ServiceHistory extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ServiceHistory window = new ServiceHistory("1");
+					ServiceHistory window = new ServiceHistory("1"); // Login with first user
 					window.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();

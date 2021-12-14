@@ -1,3 +1,7 @@
+/**
+ * @author Aravind Haridas
+ */
+
 package back_end;
 
 import java.sql.Connection;
@@ -19,7 +23,6 @@ public class PostgreOperation {
 		try {
 			Class.forName("org.postgresql.Driver");
 			c = DriverManager.getConnection("jdbc:postgresql://localhost:5432/icts", "postgres", "12345");
-			// System.out.println("Opened database successfully\n");
 			stmt = c.createStatement();
 
 		} catch (Exception e) {
@@ -29,17 +32,9 @@ public class PostgreOperation {
 		}
 	}
 
-	
-	/*
-	 * For Common
-	 */
-
-	
-	
 	/*
 	 * For Customer
 	 */
-	
 	public String getName(String user_id) {
 		String fname = "", lname = "";
 		try {
@@ -89,7 +84,7 @@ public class PostgreOperation {
 		}
 		return count;
 	}
-	
+
 	public String getCustID(String user_id) {
 		String cust_id = "";
 		try {
@@ -157,7 +152,7 @@ public class PostgreOperation {
 		}
 		return price;
 	}
-	
+
 	public void addRequest(String serv_id, String cust_id) {
 		int n = getCount("SELECT count(*) FROM request;");
 		try {
@@ -195,19 +190,12 @@ public class PostgreOperation {
 		return arr;
 	}
 
-	
-
-	
 	/*
 	 * For Employee
 	 */
-	
-	
-	
+
 	/*
 	 * For Hod
 	 */
 
-	
-	
 }

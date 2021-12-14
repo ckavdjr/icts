@@ -1,3 +1,7 @@
+/**
+ * @author Aravind Haridas
+ */
+
 package customer;
 
 import java.awt.EventQueue;
@@ -6,7 +10,6 @@ import javax.swing.JLabel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import javax.swing.JScrollPane;
 import javax.swing.JPanel;
 import java.awt.GridLayout;
 import java.awt.Font;
@@ -16,8 +19,6 @@ import back_end.PostgreOperation;
 
 public class Customer extends JFrame {
 
-	//private JLabel[] service;
-	//private JLabel[] price;
 	private static String user_id;
 	private static String cust_id;
 
@@ -64,7 +65,6 @@ public class Customer extends JFrame {
 		btn_service_history.setFont(new Font("Tahoma", Font.BOLD, 12));
 		btn_service_history.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// System.out.println("Service History");
 				ServiceHistory.openFrame(cust_id);
 			}
 		});
@@ -77,8 +77,6 @@ public class Customer extends JFrame {
 		getContentPane().add(lbl_services);
 
 		int n = pg.getCount("SELECT COUNT(*) FROM services;"); // Number of records in DB
-		//service = new JLabel[n];
-		//price = new JLabel[n];
 		JPanel panel = new JPanel();
 		panel.setBounds(24, 193, 937, 269);
 		getContentPane().add(panel);
@@ -86,19 +84,13 @@ public class Customer extends JFrame {
 
 		for (int i = 0; i < n; i++) {
 			String serv_id = pg.getServiceID(i);
-			/*
-			 * service[i] = new JLabel("Service " + i); service[i].setFont(new
-			 * Font("Tahoma", Font.BOLD, 21)); panel.add(service[i]); price[i] = new
-			 * JLabel("Price " + i); price[i].setFont(new Font("Tahoma", Font.BOLD, 21));
-			 * panel.add(price[i]);
-			 */
 			Component.createServiceLabel(serv_id, panel);
 			Component.createPriceLabel(serv_id, panel);
 			Component.createRequestButton(cust_id, i, panel);
 		}
 
 	}
-	
+
 	static void openFrame(String cust_id) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -119,7 +111,7 @@ public class Customer extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Customer window = new Customer("2"); // Login with first user
+					Customer window = new Customer("1"); // Login with first user
 					window.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
