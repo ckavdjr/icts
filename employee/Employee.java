@@ -1,0 +1,99 @@
+/**
+ * @author Dany Geo
+ */
+
+package employee;
+
+import java.awt.EventQueue;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.JPanel;
+
+public class Employee extends JFrame {
+
+	private JFrame frame;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Employee window = new Employee();
+					window.frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the application.
+	 */
+	public Employee() {
+
+		initialize();
+	}
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
+		frame = new JFrame();
+		frame.setBounds(100, 100, 450, 300);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(null);
+
+		JLabel lblNewLabel = new JLabel("Welcome");
+		lblNewLabel.setBounds(10, 21, 66, 27);
+		frame.getContentPane().add(lblNewLabel);
+
+		JLabel lblNewLabe2 = new JLabel("Services");
+		lblNewLabe2.setBounds(10, 60, 66, 27);
+		frame.getContentPane().add(lblNewLabe2);
+
+		JLabel lblNewLabe3 = new JLabel("Service 1");
+		lblNewLabe3.setBounds(10, 120, 66, 27);
+		frame.getContentPane().add(lblNewLabe3);
+
+		JLabel lblNewLabe4 = new JLabel("Service 2");
+		lblNewLabe4.setBounds(10, 160, 66, 27);
+		frame.getContentPane().add(lblNewLabe4);
+
+		JButton btnNewButton_1 = new JButton("Complete");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("Service 1 completed");
+			}
+		});
+		btnNewButton_1.setBounds(323, 120, 89, 23);
+		frame.getContentPane().add(btnNewButton_1);
+
+		JButton btnNewButton_2 = new JButton("Complete");
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("Service 2 completed");
+			}
+		});
+		btnNewButton_2.setBounds(323, 160, 89, 23);
+		frame.getContentPane().add(btnNewButton_2);
+
+		JButton btnNewButton_3 = new JButton("Log Out");
+		btnNewButton_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("Logged out");
+			}
+		});
+		btnNewButton_3.setBounds(323, 11, 89, 23);
+		frame.getContentPane().add(btnNewButton_3);
+
+		JPanel panel = new JPanel();
+		panel.setBounds(10, 99, 414, 119);
+		frame.getContentPane().add(panel);
+	}
+}
