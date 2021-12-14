@@ -29,6 +29,17 @@ public class PostgreOperation {
 		}
 	}
 
+	
+	/*
+	 * For Common
+	 */
+
+	
+	
+	/*
+	 * For Customer
+	 */
+	
 	public String getName(String user_id) {
 		String fname = "", lname = "";
 		try {
@@ -58,6 +69,23 @@ public class PostgreOperation {
 
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}
+		return count;
+	}
+
+	public int getCount(String sql, String cust_id) {
+		int count = 0;
+		try {
+			ps = c.prepareStatement(sql);
+			ps.setInt(1, Integer.parseInt(cust_id));
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				count = rs.getInt(1);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+
 		}
 		return count;
 	}
@@ -146,4 +174,17 @@ public class PostgreOperation {
 
 	}
 
+	
+	/*
+	 * For Employee
+	 */
+	
+	
+	
+	/*
+	 * For Hod
+	 */
+
+	
+	
 }

@@ -11,14 +11,19 @@ public class Component { // TODO Replace(remove) all Font.PLAIN in all classes
 
 	static PostgreOperation pg = new PostgreOperation();
 
-	public static void createRequestButton(String user_id, int i, JPanel panel) {
+	
+	
+	/*
+	 * For Customer
+	 */
+	public static void createRequestButton(String cust_id, int i, JPanel panel) {
 		JButton request = new JButton("Request");
 		request.setFont(new Font("Tahoma", Font.PLAIN, 21));
 
 		request.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("Service ID:" + i + "\nRequest added.\n"); // TODO: Remove tracer
-				pg.addRequest(pg.getServiceID(i), pg.getCustID(user_id));
+				pg.addRequest(pg.getServiceID(i), cust_id);
 			}
 		});
 
@@ -39,4 +44,13 @@ public class Component { // TODO Replace(remove) all Font.PLAIN in all classes
 		panel.add(price);
 	}
 
+	
+	/*
+	 * For Employee
+	 */
+	
+	
+	/*
+	 * For Hod
+	 */
 }

@@ -16,9 +16,10 @@ import back_end.PostgreOperation;
 
 public class Customer extends JFrame {
 
-	private JLabel[] service;
-	private JLabel[] price;
+	//private JLabel[] service;
+	//private JLabel[] price;
 	private static String user_id;
+	private static String cust_id;
 
 	PostgreOperation pg = new PostgreOperation();
 
@@ -27,6 +28,7 @@ public class Customer extends JFrame {
 	 */
 	public Customer(String user_id) {
 		Customer.user_id = user_id;
+		Customer.cust_id = pg.getCustID(user_id);
 
 		initialize();
 	}
@@ -43,7 +45,6 @@ public class Customer extends JFrame {
 		getContentPane().setLayout(null);
 
 		String msg = "Welcome, " + pg.getName(user_id);
-		;
 		JLabel lbl_welcome = new JLabel(msg);
 		lbl_welcome.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		lbl_welcome.setBounds(122, 27, 431, 61);
@@ -61,9 +62,10 @@ public class Customer extends JFrame {
 
 		JButton btn_service_history = new JButton("Service History");
 		btn_service_history.setFont(new Font("Tahoma", Font.BOLD, 12));
-		btn_service_history.addActionListener(new ActionListener() { // TODO: Service history button
+		btn_service_history.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// System.out.println("Service History");
+				ServiceHistory.openFrame(cust_id);
 			}
 		});
 		btn_service_history.setBounds(384, 494, 237, 61);
@@ -75,14 +77,12 @@ public class Customer extends JFrame {
 		getContentPane().add(lbl_services);
 
 		int n = pg.getCount("SELECT COUNT(*) FROM services;"); // Number of records in DB
-		service = new JLabel[n];
-		price = new JLabel[n];
-
+		//service = new JLabel[n];
+		//price = new JLabel[n];
 		JPanel panel = new JPanel();
 		panel.setBounds(24, 193, 937, 269);
 		getContentPane().add(panel);
 		panel.setLayout(new GridLayout(n, 3, 0, 10));
-		panel.getComponentOrientation();
 
 		for (int i = 0; i < n; i++) {
 			String serv_id = pg.getServiceID(i);
@@ -94,9 +94,22 @@ public class Customer extends JFrame {
 			 */
 			Component.createServiceLabel(serv_id, panel);
 			Component.createPriceLabel(serv_id, panel);
-			Component.createRequestButton(user_id, i, panel);
+			Component.createRequestButton(cust_id, i, panel);
 		}
 
+	}
+	
+	static void openFrame(String cust_id) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Customer window = new Customer(user_id);
+					window.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
 	}
 
 	/**
@@ -106,7 +119,7 @@ public class Customer extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Customer window = new Customer("1");
+					Customer window = new Customer("1"); // Login with first user
 					window.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
