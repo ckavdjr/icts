@@ -1,5 +1,4 @@
 /**
- * @author Sidharth PV
  * @author Aravind Haridas
  */
 
@@ -19,16 +18,15 @@ import java.awt.Font;
 import java.awt.Color;
 import back_end.Component;
 import back_end.PostgreOperation;
-import customer.ServiceHistory;
 
-public class Login extends JFrame{
+public class LoginTest extends JFrame{
 	
 	PostgreOperation pg = new PostgreOperation();
 
 	/**
 	 * Create the application.
 	 */
-	public Login() {
+	public LoginTest() {
 		
 		initialize();
 	}
@@ -38,15 +36,14 @@ public class Login extends JFrame{
 	 */
 	private void initialize() {		
 		setTitle("Login");
-		setBounds(100, 100, 222, 290);
+		setBounds(100, 100, 250, 300);
 		setLocationRelativeTo(null);
 		setResizable(false);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		getContentPane().setLayout(null);
 
 		JLabel title = new JLabel("ICTS");
-		title.setBounds(77, 15, 60, 34);
-		title.setFont(new Font("Tahoma", Font.PLAIN, 22));
+		title.setBounds(22, 21, 66, 27);
 		title.setForeground(Color.red);
 		getContentPane().add(title);
 
@@ -66,12 +63,6 @@ public class Login extends JFrame{
 
 		JButton btn_register = new JButton("Create new account");
 		btn_register.setBounds(10, 190, 190, 34);
-		btn_register.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				dispose();
-				Register.openFrame();
-			}
-		});
 		getContentPane().add(btn_register);
 
 	}
@@ -83,7 +74,7 @@ public class Login extends JFrame{
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Login window = new Login();
+					LoginTest window = new LoginTest();
 					window.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();

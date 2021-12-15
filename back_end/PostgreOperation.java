@@ -101,6 +101,41 @@ public class PostgreOperation {
 		}
 		return cust_id;
 	}
+	
+	public String getHodID(String user_id) {
+		String hod_id = "";
+		try {
+			sql = "SELECT hod_id FROM hod WHERE user_id = ?";
+			ps = c.prepareStatement(sql);
+			ps.setInt(1, Integer.parseInt(user_id));
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				hod_id = rs.getString(1);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return hod_id;
+	}
+	
+	public String getEmpID(String user_id) {
+		String emp_id = "";
+		try {
+			sql = "SELECT emp_id FROM employee WHERE user_id = ?";
+			ps = c.prepareStatement(sql);
+			ps.setInt(1, Integer.parseInt(user_id));
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				emp_id = rs.getString(1);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return emp_id;
+	}
+	
 
 	public String getServiceID(int i) {
 		String serv_id = "";
@@ -189,6 +224,7 @@ public class PostgreOperation {
 		}
 		return arr;
 	}
+
 
 	/*
 	 * For Employee

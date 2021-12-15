@@ -5,6 +5,9 @@
 package login;
 
 import javax.swing.*;
+
+import customer.Customer;
+
 import java.awt.*;
 import java.awt.event.*;
 import java.sql.*;
@@ -134,8 +137,30 @@ public class Register extends JFrame implements ActionListener {
 			tf8.setText("");
 		}
 	}
+	
+	static void openFrame() {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Register window = new Register();
+					window.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
 
-	public static void main(String args[]) {
-		new Register();
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Register window = new Register();
+					window.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
 	}
 }
