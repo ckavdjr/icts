@@ -11,10 +11,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JPanel;
-
 import back_end.PostgreOperation;
-import customer.Customer;
-import hod.Hod;
 import login.Login;
 
 public class Employee extends JFrame {

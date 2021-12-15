@@ -65,12 +65,6 @@ public class Component {
 			panel.add(date);
 		}
 
-		for (int i = 0; i < n; i++) {
-			System.out.println(arr[i][0]);
-			System.out.println(arr[i][1]);
-			System.out.println(arr[i][2]);
-			System.out.println();
-		}
 	}
 
 }

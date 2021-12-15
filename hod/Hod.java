@@ -7,14 +7,10 @@ package hod;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-
 import back_end.PostgreOperation;
-import customer.Customer;
 import login.Login;
-
 import javax.swing.JButton;
 
 public class Hod extends JFrame {
