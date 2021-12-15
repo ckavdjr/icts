@@ -271,49 +271,4 @@ public class PostgreOperation {
 		return false;
 	}
 
-	public boolean isCustomer(String user_id) {
-		try {
-			sql = "SELECT cust_id FROM customer WHERE user_id = ?";
-			ps = c.prepareStatement(sql);
-			rs = ps.executeQuery();
-			if (rs.next()) {
-				return true;
-			}
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return false;
-	}
-
-	public boolean isEmployee(String user_id) {
-		try {
-			sql = "SELECT username, password FROM users;";
-			ps = c.prepareStatement(sql);
-			rs = ps.executeQuery();
-			if (rs.next()) {
-				return true;
-			}
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return false;
-	}
-
-	public boolean isHod(String user_id) {
-		try {
-			sql = "SELECT username, password FROM users;";
-			ps = c.prepareStatement(sql);
-			rs = ps.executeQuery();
-			if (rs.next()) {
-				return true;
-			}
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return false;
-	}
-
 }
