@@ -63,7 +63,7 @@ public class Hod extends JFrame {
 		getContentPane().add(btnNewButton_4);
 	}
 	
-	static void openFrame(String user_id) {
+	public static void openFrame(String user_id) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {

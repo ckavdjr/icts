@@ -91,7 +91,7 @@ public class Customer extends JFrame {
 
 	}
 
-	static void openFrame(String user_id) {
+	public static void openFrame(String user_id) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {

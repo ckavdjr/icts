@@ -85,6 +85,24 @@ public class PostgreOperation {
 		return count;
 	}
 
+	public String getUserID(String username)
+	{
+		String user_id = "";
+		try {
+			sql = "SELECT user_id FROM users WHERE username = ?;";
+			ps = c.prepareStatement(sql);
+			ps.setString(1, username);
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				user_id = rs.getString(1);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return user_id;
+	}
+	
 	public String getCustID(String user_id) {
 		String cust_id = "";
 		try {
@@ -101,40 +119,9 @@ public class PostgreOperation {
 		}
 		return cust_id;
 	}
-	
-	public String getHodID(String user_id) {
-		String hod_id = "";
-		try {
-			sql = "SELECT hod_id FROM hod WHERE user_id = ?";
-			ps = c.prepareStatement(sql);
-			ps.setInt(1, Integer.parseInt(user_id));
-			rs = ps.executeQuery();
-			while (rs.next()) {
-				hod_id = rs.getString(1);
-			}
 
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return hod_id;
-	}
-	
-	public String getEmpID(String user_id) {
-		String emp_id = "";
-		try {
-			sql = "SELECT emp_id FROM employee WHERE user_id = ?";
-			ps = c.prepareStatement(sql);
-			ps.setInt(1, Integer.parseInt(user_id));
-			rs = ps.executeQuery();
-			while (rs.next()) {
-				emp_id = rs.getString(1);
-			}
 
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return emp_id;
-	}
+
 	
 
 	public String getServiceID(int i) {
@@ -225,13 +212,118 @@ public class PostgreOperation {
 		return arr;
 	}
 
-
 	/*
 	 * For Employee
 	 */
+	public String getEmpID(String user_id) {
+		String emp_id = "";
+		try {
+			sql = "SELECT emp_id FROM employee WHERE user_id = ?";
+			ps = c.prepareStatement(sql);
+			ps.setInt(1, Integer.parseInt(user_id));
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				emp_id = rs.getString(1);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return emp_id;
+	}
 
 	/*
 	 * For Hod
 	 */
+	public String getHodID(String user_id) {
+		String hod_id = "";
+		try {
+			sql = "SELECT hod_id FROM hod WHERE user_id = ?";
+			ps = c.prepareStatement(sql);
+			ps.setInt(1, Integer.parseInt(user_id));
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				hod_id = rs.getString(1);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return hod_id;
+	}
+
+	/*
+	 * For Login
+	 */
+	public boolean userExists(String username, String password) {
+		try {
+			sql = "SELECT username, password FROM users;";
+			ps = c.prepareStatement(sql);
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				if (username.equals(rs.getString(1))) {
+					if (password.equals(rs.getString(2))) {
+						return true;
+					} else {
+						break;
+					}
+				}
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+
+	public boolean isCustomer(String user_id) {
+		try {
+			sql = "SELECT cust_id FROM customer WHERE user_id = ?";
+			ps = c.prepareStatement(sql);
+			rs = ps.executeQuery();
+			if (rs.next())
+			{
+				return true;
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+
+	public boolean isEmployee(String user_id) {
+		try {
+			sql = "SELECT username, password FROM users;";
+			ps = c.prepareStatement(sql);
+			rs = ps.executeQuery();
+			if (rs.next())
+			{
+				return true;
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+
+	public boolean isHod(String user_id) {
+		try {
+			sql = "SELECT username, password FROM users;";
+			ps = c.prepareStatement(sql);
+			rs = ps.executeQuery();
+			if (rs.next())
+			{
+				return true;
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+	
+	
 
 }

@@ -89,7 +89,7 @@ public class Employee extends JFrame {
 		getContentPane().add(panel);
 	}
 	
-	static void openFrame(String user_id) {
+	public static void openFrame(String user_id) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
