@@ -172,7 +172,7 @@ public class PostgreOperation {
 	public String[][] getServiceHistoryLabels(String cust_id, int n) {
 		String[][] arr = new String[n][3];
 		try {
-			sql = "SELECT services.name, request.status, assignment.date FROM request INNER JOIN services ON request.serv_id = services.serv_id FULL JOIN assignment ON request.req_id = assignment.req_id WHERE cust_id = ?;";
+			sql = "SELECT services.name, request.status, assignment.date FROM request INNER JOIN services ON request.serv_id = services.serv_id FULL JOIN assignment ON request.req_id = assignment.req_id WHERE cust_id = ? ORDER BY request.req_id;";
 			ps = c.prepareStatement(sql);
 			ps.setInt(1, Integer.parseInt(cust_id));
 			rs = ps.executeQuery();
