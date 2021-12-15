@@ -13,9 +13,9 @@ import java.awt.event.ActionEvent;
 import javax.swing.JPanel;
 import java.awt.GridLayout;
 import java.awt.Font;
-
 import back_end.Component;
 import back_end.PostgreOperation;
+import login.Login;
 
 public class Customer extends JFrame {
 
@@ -53,9 +53,10 @@ public class Customer extends JFrame {
 
 		JButton btn_logout = new JButton("Logout");
 		btn_logout.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		btn_logout.addActionListener(new ActionListener() { // TODO: Logout button
+		btn_logout.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// System.out.println("Logged out");
+				dispose();
+				Login.main(null);
 			}
 		});
 		btn_logout.setBounds(765, 41, 130, 44);

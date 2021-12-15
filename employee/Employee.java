@@ -15,6 +15,7 @@ import javax.swing.JPanel;
 import back_end.PostgreOperation;
 import customer.Customer;
 import hod.Hod;
+import login.Login;
 
 public class Employee extends JFrame {
 
@@ -78,7 +79,8 @@ public class Employee extends JFrame {
 		JButton btnNewButton_3 = new JButton("Log Out");
 		btnNewButton_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("Logged out");
+				dispose();
+				Login.main(null);
 			}
 		});
 		btnNewButton_3.setBounds(323, 11, 89, 23);

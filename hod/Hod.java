@@ -5,11 +5,15 @@
 package hod;
 
 import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 import back_end.PostgreOperation;
 import customer.Customer;
+import login.Login;
 
 import javax.swing.JButton;
 
@@ -60,6 +64,12 @@ public class Hod extends JFrame {
 
 		JButton btnNewButton_4 = new JButton("Log Out");
 		btnNewButton_4.setBounds(323, 11, 89, 23);
+		btnNewButton_4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				Login.main(null);
+			}
+		});
 		getContentPane().add(btnNewButton_4);
 	}
 	
