@@ -1,5 +1,4 @@
 /**
- * @author Sidharth PV
  * @author Aravind Haridas
  */
 
@@ -25,25 +24,25 @@ import customer.Customer;
 import hod.Hod;
 import employee.Employee;
 
-public class Login extends JFrame{
-	
+public class Login extends JFrame {
+
 	private String username;
 	private String password;
-	
+
 	PostgreOperation pg = new PostgreOperation();
 
 	/**
 	 * Create the application.
 	 */
 	public Login() {
-		
+
 		initialize();
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize() {		
+	private void initialize() {
 		setTitle("Login");
 		setBounds(100, 100, 222, 290);
 		setLocationRelativeTo(null);
@@ -75,32 +74,28 @@ public class Login extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				username = tf_username.getText();
 				password = String.valueOf(pw_password.getPassword());
-				if (pg.userExists(username, password))
-				{
+				if (pg.userExists(username, password)) {
 					String user_id = pg.getUserID(username);
-					// TODO: open respective window
-					
+
 					if (!"".equals(pg.getCustID(user_id))) {
 						dispose();
 						Customer.openFrame(user_id);
 					}
-					
+
 					if (!"".equals(pg.getEmpID(user_id))) {
 						dispose();
 						Employee.openFrame(user_id);
 					}
-					
+
 					if (!"".equals(pg.getHodID(user_id))) {
 						dispose();
 						Hod.openFrame(user_id);
-					}				
-					
-				}
-				else
-				{
+					}
+
+				} else {
 					showMessageDialog(null, "Username or password is invalid!");
 				}
-				
+
 			}
 		});
 
@@ -115,7 +110,7 @@ public class Login extends JFrame{
 		getContentPane().add(btn_register);
 
 	}
-	
+
 	/**
 	 * Launch the application.
 	 */
@@ -131,5 +126,5 @@ public class Login extends JFrame{
 			}
 		});
 	}
-	
+
 }

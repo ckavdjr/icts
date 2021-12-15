@@ -85,8 +85,7 @@ public class PostgreOperation {
 		return count;
 	}
 
-	public String getUserID(String username)
-	{
+	public String getUserID(String username) {
 		String user_id = "";
 		try {
 			sql = "SELECT user_id FROM users WHERE username = ?;";
@@ -102,7 +101,7 @@ public class PostgreOperation {
 		}
 		return user_id;
 	}
-	
+
 	public String getCustID(String user_id) {
 		String cust_id = "";
 		try {
@@ -119,10 +118,6 @@ public class PostgreOperation {
 		}
 		return cust_id;
 	}
-
-
-
-	
 
 	public String getServiceID(int i) {
 		String serv_id = "";
@@ -269,7 +264,7 @@ public class PostgreOperation {
 					}
 				}
 			}
-			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -281,11 +276,10 @@ public class PostgreOperation {
 			sql = "SELECT cust_id FROM customer WHERE user_id = ?";
 			ps = c.prepareStatement(sql);
 			rs = ps.executeQuery();
-			if (rs.next())
-			{
+			if (rs.next()) {
 				return true;
 			}
-			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -297,11 +291,10 @@ public class PostgreOperation {
 			sql = "SELECT username, password FROM users;";
 			ps = c.prepareStatement(sql);
 			rs = ps.executeQuery();
-			if (rs.next())
-			{
+			if (rs.next()) {
 				return true;
 			}
-			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -313,17 +306,14 @@ public class PostgreOperation {
 			sql = "SELECT username, password FROM users;";
 			ps = c.prepareStatement(sql);
 			rs = ps.executeQuery();
-			if (rs.next())
-			{
+			if (rs.next()) {
 				return true;
 			}
-			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return false;
 	}
-	
-	
 
 }

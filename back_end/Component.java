@@ -73,11 +73,4 @@ public class Component {
 		}
 	}
 
-	/*
-	 * For Employee
-	 */
-
-	/*
-	 * For Hod
-	 */
 }
