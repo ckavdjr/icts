@@ -4,6 +4,8 @@
 
 package back_end;
 
+import static javax.swing.JOptionPane.showMessageDialog;
+
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -25,6 +27,7 @@ public class Component {
 		request.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				pg.addRequest(pg.getServiceID(i), cust_id);
+				showMessageDialog(null, "Request has been added!");
 			}
 		});
 
