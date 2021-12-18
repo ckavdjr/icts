@@ -1,7 +1,6 @@
 /**
  * @author Dany Geo
  */
-
 package employee;
 
 import java.awt.EventQueue;

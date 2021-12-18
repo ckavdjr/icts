@@ -1,13 +1,9 @@
 /**
  * @author Sidharth PV
  */
-
 package login;
 
 import javax.swing.*;
-
-import customer.Customer;
-
 import java.awt.*;
 import java.awt.event.*;
 import java.sql.*;

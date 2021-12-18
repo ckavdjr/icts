@@ -1,7 +1,6 @@
 /**
  * @author Aravind Haridas
  */
-
 package customer;
 
 import java.awt.EventQueue;

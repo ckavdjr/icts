@@ -1,7 +1,6 @@
 /**
  * @author Aravind Haridas
  */
-
 package login;
 
 import java.awt.EventQueue;

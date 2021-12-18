@@ -1,7 +1,6 @@
 /**
  * @author Aravind Haridas
  */
-
 package customer;
 
 import java.awt.EventQueue;
@@ -10,7 +9,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import java.awt.GridLayout;
 import java.awt.Font;
-
 import back_end.Component;
 import back_end.PostgreOperation;
 
