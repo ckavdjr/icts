@@ -32,6 +32,30 @@ public class PostgreOperation {
 	}
 
 	/*
+	 * For Login
+	 */
+	public boolean userExists(String username, String password) {
+		try {
+			sql = "SELECT username, password FROM users;";
+			ps = c.prepareStatement(sql);
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				if (username.equals(rs.getString(1))) {
+					if (password.equals(rs.getString(2))) {
+						return true;
+					} else {
+						break;
+					}
+				}
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+
+	/*
 	 * For Customer
 	 */
 	public String getName(String user_id) {
@@ -226,6 +250,9 @@ public class PostgreOperation {
 		return emp_id;
 	}
 
+	/**
+	 * @author Harichand Manoj
+	 */
 	/*
 	 * For Hod
 	 */
@@ -246,28 +273,40 @@ public class PostgreOperation {
 		return hod_id;
 	}
 
-	/*
-	 * For Login
-	 */
-	public boolean userExists(String username, String password) {
+	public String[] getPending() {
+		String[] arr2 = new String[2];
 		try {
-			sql = "SELECT username, password FROM users;";
+			sql = "select req_id from request where req_id=4";
 			ps = c.prepareStatement(sql);
 			rs = ps.executeQuery();
+			int i = 0;
 			while (rs.next()) {
-				if (username.equals(rs.getString(1))) {
-					if (password.equals(rs.getString(2))) {
-						return true;
-					} else {
-						break;
-					}
-				}
+				arr2[i] = rs.getString("req_id");
+				i++;
 			}
 
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return false;
+		return arr2;
+	}
+
+	public String[] getEmpName() {
+		String[] arr2 = new String[2];
+		try {
+			sql = "select fname from users where user_id=4 or user_id=5;";
+			ps = c.prepareStatement(sql);
+			rs = ps.executeQuery();
+			int i = 0;
+			while (rs.next()) {
+				arr2[i] = rs.getString("fname");
+				i++;
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return arr2;
 	}
 
 }
