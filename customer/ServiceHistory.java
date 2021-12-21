@@ -3,6 +3,7 @@
  */
 package customer;
 
+import java.awt.Color;
 import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -37,9 +38,11 @@ public class ServiceHistory extends JFrame {
 		setResizable(false);
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		getContentPane().setLayout(null);
+		getContentPane().setBackground(Color.white);
 
 		JLabel lbl_title = new JLabel("Service History");
 		lbl_title.setFont(new Font("Tahoma", Font.PLAIN, 27));
+		lbl_title.setForeground(Color.blue);
 		lbl_title.setBounds(63, 21, 259, 42);
 		getContentPane().add(lbl_title);
 
@@ -48,6 +51,7 @@ public class ServiceHistory extends JFrame {
 		panel.setBounds(40, 87, 620, 285);
 		getContentPane().add(panel);
 		panel.setLayout(new GridLayout(n, 3, 0, 10));
+		panel.setBackground(Color.white);
 
 		Component.createServiceHistoryLabels(cust_id, panel, n);
 

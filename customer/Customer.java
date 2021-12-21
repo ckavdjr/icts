@@ -3,6 +3,7 @@
  */
 package customer;
 
+import java.awt.Color;
 import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -43,10 +44,12 @@ public class Customer extends JFrame {
 		setResizable(false);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		getContentPane().setLayout(null);
+		getContentPane().setBackground(Color.yellow);
 
 		String msg = "Welcome, " + pg.getName(user_id);
 		JLabel lbl_welcome = new JLabel(msg);
 		lbl_welcome.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		lbl_welcome.setForeground(Color.red);
 		lbl_welcome.setBounds(122, 27, 431, 61);
 		getContentPane().add(lbl_welcome);
 
@@ -73,6 +76,7 @@ public class Customer extends JFrame {
 
 		JLabel lbl_services = new JLabel("Services");
 		lbl_services.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		lbl_services.setForeground(Color.blue);
 		lbl_services.setBounds(63, 121, 209, 61);
 		getContentPane().add(lbl_services);
 
@@ -81,6 +85,7 @@ public class Customer extends JFrame {
 		panel.setBounds(24, 193, 937, 269);
 		getContentPane().add(panel);
 		panel.setLayout(new GridLayout(n, 3, 0, 10));
+		panel.setBackground(Color.yellow);
 
 		for (int i = 0; i < n; i++) {
 			String serv_id = pg.getServiceID(i);

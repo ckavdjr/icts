@@ -45,6 +45,7 @@ public class Login extends JFrame {
 		setResizable(false);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		getContentPane().setLayout(null);
+		getContentPane().setBackground(Color.yellow);
 
 		JLabel lbl_title = new JLabel("ICTS");
 		lbl_title.setBounds(77, 15, 60, 34);

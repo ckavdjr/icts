@@ -4,6 +4,8 @@
 package back_end;
 
 import static javax.swing.JOptionPane.showMessageDialog;
+
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -36,6 +38,7 @@ public class Component {
 		String serv_name = pg.getServiceName(serv_id);
 		JLabel service = new JLabel(serv_name);
 		service.setFont(new Font("Tahoma", Font.PLAIN, 21));
+		service.setForeground(Color.darkGray);
 		panel.add(service);
 	}
 
@@ -43,6 +46,7 @@ public class Component {
 		String serv_price = pg.getPrice(serv_id);
 		JLabel price = new JLabel("$" + serv_price);
 		price.setFont(new Font("Tahoma", Font.PLAIN, 21));
+		price.setForeground(Color.darkGray);
 		panel.add(price);
 	}
 
@@ -52,14 +56,17 @@ public class Component {
 		for (int i = 0; i < n; i++) {
 			JLabel name = new JLabel(arr[i][0]);
 			name.setFont(new Font("Tahoma", Font.PLAIN, 21));
+			name.setForeground(Color.darkGray);
 			panel.add(name);
 
 			JLabel status = new JLabel(arr[i][1]);
 			status.setFont(new Font("Tahoma", Font.PLAIN, 21));
+			status.setForeground(Color.darkGray);
 			panel.add(status);
 
 			JLabel date = new JLabel(arr[i][2]);
 			date.setFont(new Font("Tahoma", Font.PLAIN, 21));
+			date.setForeground(Color.darkGray);
 			panel.add(date);
 		}
 
