@@ -30,6 +30,7 @@ public class Approval {
 	String sql = null;
 	PreparedStatement ps = null;
 	PostgreOperation pg = new PostgreOperation();
+
 	/**
 	 * Launch the application.
 	 */
@@ -61,26 +62,27 @@ public class Approval {
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
-		
+
 		JLabel lblNewLabel = new JLabel("Assign to:");
 		lblNewLabel.setBounds(10, 77, 90, 34);
 		frame.getContentPane().add(lblNewLabel);
-		
+
 		JLabel lblNewLabel_1 = new JLabel("Approve Pending Requests");
 		lblNewLabel_1.setBounds(10, 29, 179, 37);
 		frame.getContentPane().add(lblNewLabel_1);
-		
-		String names[]= pg.getPending();
+
+		String names[] = pg.getPending();
 		JComboBox comboBox = new JComboBox(names);
 		comboBox.setBounds(97, 83, 116, 22);
 		frame.getContentPane().add(comboBox);
-		
+
 		JButton btnNewButton = new JButton("Approve");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("Approved");
 			}
-			});
+		});
 		btnNewButton.setBounds(261, 134, 89, 23);
 		frame.getContentPane().add(btnNewButton);
-	}}
+	}
+}
